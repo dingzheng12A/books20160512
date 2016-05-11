@@ -1,0 +1,6 @@
+<table id="rolelist" border="1" cellpadding="0" cellspacing="0">
+                        <tr style="background-color:gray;"><td width="200px;" align="center">角色名称</td><td width="200px" align="center">角色描述</td><td width="200px;" align="center">所属用户</td><td width="200px;">创建时间</td><td width="200px;">操作</td></tr>
+			{%for res in roleinfors%}
+                        <tr><td width="200px;" id="username" align="center">{{res.name}}</td><td width="200px" align="center">{{res.description}}</td><td width="200px;" align="center" id="status">****</td><td width="200px;">{{res.updatetime}}</td><td width="200px;"><img id="edit" width="10%" src="/js/edit.jpg"><span id="editbutton" style="display:none;cursor:pointer;">编辑用户</span>&nbsp;<img id="delete" width="11%" src="/js/delete.png"><span id="deletebutton" style="display:none;cursor:pointer;">删除用户</span></td></tr>
+			{%endfor%}
+</table>

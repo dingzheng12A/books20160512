@@ -160,4 +160,3 @@ LOGGING = {
 }
 
 LOGIN_URL="/accounts/"
-

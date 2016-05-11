@@ -1,0 +1,403 @@
+.title{
+	display:none;
+        position:absolute;
+        top:0%;
+        left:0%;
+}
+.all_over{
+	display:none;
+	position:absolute;
+	top:47px;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	-moz-opacity:0.8;
+	filter:alpha(opacity=80);
+	z-index:1001;
+	
+}
+.addborder{
+	border:1px solid yellow;
+}
+.little_over{                                               /* 用户编辑窗口背景色 */
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	-moz-opacity:0.8;
+	filter:alpha(opacity=80);
+	z-index:1007;
+	
+}
+.bottom{
+        display:block;
+        position:absolute;
+        top:94%;
+        opacity:0.8;
+        width:100%;
+        height:30px;
+        background:gray;
+}
+.bottom_role{
+        display:block;
+        position:absolute;
+        top:94%;
+        opacity:0.8;
+        width:100%;
+        height:30px;
+        background:gray;
+}
+.edit_window{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:300px;
+	background:white;
+	z-index:1008;
+	
+}
+.adduser{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.edituser{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.assignrole{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:300px;
+	background:white;
+	z-index:1008;
+	
+}
+
+.editpasswd{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.close{
+	display:none;
+	position:absolute;
+	top:10%;
+	left:76.7%;
+	width:60px;
+	height:25px;
+	text-align:right;
+/*	background:blue;
+	border: 2px solid lightblue; */
+	z-index: 1005;
+}
+.close1{
+	display:none;
+	position:absolute;
+	top:0%;
+	left:85%;
+	width:60px;
+	height:25px;
+	text-align:right;
+/*	background:blue;
+	border: 2px solid lightblue; */
+	z-index: 1005;
+}
+.marked{
+	display:none;
+	position:absolute;
+	top:12%;
+	left:76.7%;
+	width:60px;
+	height:25px;
+	text-align:center;
+	background:yellow;
+	opacity:0.6;
+	z-index: 1005;
+}
+.post{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:75%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+
+.cancle{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:90%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+.borders{
+	display:none;
+	position:absolute;
+	top:10%;
+	left:10%;
+	width:70%;
+	height:70%;
+	background:white;
+	border: 10px solid lightblue;
+	z-index:1002;
+}
+.addbook{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1003;
+	text-align:center;
+}
+.bookquery{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1004;
+	text-align:center;
+}
+.bookdelete{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1005;
+	text-align:center;
+}
+.bookmod{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1006;
+	text-align:center;
+}
+.titles{
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	
+}
+.passwd{
+	display:none;
+	position:absolute;
+	top:5%;
+	left:20%;
+	width:400px;
+	height:220px;
+	background:white;
+	text-align:center;
+	z-index:1002;
+}
+.user{
+	display:none;
+	position:absolute;
+	top:5%;
+	left:20%;
+	width:70%;
+	height:390px;
+	text-align:left;
+	background:white;
+	z-index:1002;
+}
+.button_adduser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:10px;
+	border:1px solid black;
+	z-index:1003;
+}
+.button_edituser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:100px;
+	border:1px solid black;
+	z-index:1003;
+}
+.resetpasswd{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:150px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+.deleteuser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:240px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+.search{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:700px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+
+.users{
+	display:block;
+	position:absolute;
+	top:70px;
+	left:10px;
+	width:94%;
+	height:240pxx;
+	border:1px solid black;
+}
+.roles{
+	display:block;
+	position:absolute;
+	top:70px;
+	left:10px;
+	width:94%;
+	height:240pxx;
+	border:1px solid black;
+}
+.userlist{
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:20px;
+	background:lightblue;
+	opacity:0.8;
+	border:1px solid black;
+}
+.rolelist{
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:20px;
+	background:lightblue;
+	opacity:0.8;
+	border:1px solid black;
+}
+
+.tablecolor{
+	background:#cffaaa;
+}
+.trcolor{
+	background:#cbfaca;
+}
+.role{
+	display:none;
+	position:absolute;
+	top:5%;
+	left:20%;
+	width:70%;
+	height:390px;
+	text-align:left;
+	background:white;
+	z-index:1002;
+}
+.button_addrole{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:10px;
+	border:1px solid black;
+	z-index:1003;
+}
+.addrole{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.button_editrole{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:80px;
+	border:1px solid black;
+	z-index:1003;
+}
+.editrole{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.Assign{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:150px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+.deleterole{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:220px;
+	border:1px solid black;
+	z-index:1003;
+}

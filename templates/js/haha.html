@@ -1,0 +1,26 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#but").click(function(){
+		alert("ok");
+		$.ajax(
+		{
+		url:'/ttt/',
+		type:'post',
+		data:{'a':1000,'b':2000},
+		dataType:'json',
+		async:false,
+		success:function(data){
+			alert(data);
+		}
+		});
+	});
+});
+</script>
+</head>
+<body>
+<input type="button" id="but" value="check me"/>
+</body>
+</html>

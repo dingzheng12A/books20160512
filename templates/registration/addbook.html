@@ -19,7 +19,7 @@ $(function(){
 //			function(data,status){
 //				alert("Data: "+data+"\nStatus: "+status);
 //			});
-		$.ajax({url:'/batch/',type:'post',dataType:'json',data:{name:'123',id:"456"},async:false,success:function(data){alert(data);},complete:function(data){window.location.href="/batch/";}});
+		$.ajax({url:'/batch/',type:'post',dataType:'json',data:{name:'123',id:"456"},async:true,success:function(data){'name: '+data;},complete:function(data){window.location.href="/batch/"}});
 
 	});
 });

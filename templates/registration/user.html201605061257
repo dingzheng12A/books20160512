@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html;charset=gb2312">
-<link rel="stylesheet" href="/js/wcss.css" type="text/css">
 <!--把下面代码加到<head>与</head>之间-->
 <style type="text/css">
 body,html{padding:0;margin:0;text-align:center;font:normal 14px 'arial';}
@@ -15,6 +14,304 @@ body,html{padding:0;margin:0;text-align:center;font:normal 14px 'arial';}
 #subNav{position:absolute;width:150px;top:30px;left:0px;padding:5px;background:#666;color:#fff;text-align:left;z-index:1005;}
 #subNav a{text-decoration:none;font-weight:normal;display:block;}
 #subNav a:hover{color:#f00;background:#f00;}
+.title{
+	display:none;
+        position:absolute;
+        top:0%;
+        left:0%;
+}
+.all_over{
+	display:none;
+	position:absolute;
+	top:47px;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	-moz-opacity:0.8;
+	filter:alpha(opacity=80);
+	z-index:1001;
+	
+}
+.addborder{
+	border:1px solid yellow;
+}
+.little_over{                                               /* 用户编辑窗口背景色 */
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	-moz-opacity:0.8;
+	filter:alpha(opacity=80);
+	z-index:1007;
+	
+}
+.bottom{
+        display:block;
+        position:absolute;
+        top:94%;
+        opacity:0.8;
+        width:100%;
+        height:30px;
+        background:gray;
+}
+.edit_window{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:300px;
+	background:white;
+	z-index:1008;
+	
+}
+.adduser{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.edituser{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+
+.editpasswd{                                               /* 用户编辑窗口 */
+	display:none;
+	position:absolute;
+	top:47px;
+	left:20%;
+	width:500px;
+	height:200px;
+	background:white;
+	z-index:1008;
+	
+}
+.close{
+	display:none;
+	position:absolute;
+	top:10%;
+	left:76.7%;
+	width:60px;
+	height:25px;
+	text-align:right;
+/*	background:blue;
+	border: 2px solid lightblue; */
+	z-index: 1005;
+}
+.close1{
+	display:none;
+	position:absolute;
+	top:0%;
+	left:85%;
+	width:60px;
+	height:25px;
+	text-align:right;
+/*	background:blue;
+	border: 2px solid lightblue; */
+	z-index: 1005;
+}
+.marked{
+	display:none;
+	position:absolute;
+	top:12%;
+	left:76.7%;
+	width:60px;
+	height:25px;
+	text-align:center;
+	background:yellow;
+	opacity:0.6;
+	z-index: 1005;
+}
+.post{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:75%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+
+.cancle{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:90%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+.borders{
+	display:none;
+	position:absolute;
+	top:10%;
+	left:10%;
+	width:70%;
+	height:70%;
+	background:white;
+	border: 10px solid lightblue;
+	z-index:1002;
+}
+.addbook{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1003;
+	text-align:center;
+}
+.bookquery{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1004;
+	text-align:center;
+}
+.bookdelete{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1005;
+	text-align:center;
+}
+.bookmod{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1006;
+	text-align:center;
+}
+.titles{
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	
+}
+.passwd{
+	display:none;
+	position:absolute;
+	top:5%;
+	left:20%;
+	width:400px;
+	height:220px;
+	background:white;
+	text-align:center;
+	z-index:1002;
+}
+.user{
+	display:none;
+	position:absolute;
+	top:5%;
+	left:20%;
+	width:70%;
+	height:390px;
+	text-align:left;
+	background:white;
+	z-index:1002;
+}
+.button_adduser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:10px;
+	border:1px solid black;
+	z-index:1003;
+}
+.button_edituser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:100px;
+	border:1px solid black;
+	z-index:1003;
+}
+.resetpasswd{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:150px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+.deleteuser{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:240px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+.search{
+	display:block;
+	position:absolute;
+	top:40px;
+	left:700px;
+	border:1px solid black;
+	z-index:1003;
+}
+
+
+.users{
+	display:block;
+	position:absolute;
+	top:70px;
+	left:10px;
+	width:94%;
+	height:240pxx;
+	border:1px solid black;
+}
+.userlist{
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:20px;
+	background:lightblue;
+	opacity:0.8;
+	border:1px solid black;
+}
+
+.tablecolor{
+	background:#cffaaa;
+}
+.trcolor{
+	background:#cbfaca;
+}
+
 </style>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script language="javascript" src="/js/rolemanager.js"></script>
@@ -190,18 +487,18 @@ $(function(){
 	$(".close1").click(function(){			
 		$(".all_over").css("display","none");
 		$('.passwd').css("display","none");
-		$('#tooltip_user').css("display","none");
+		$('#tooltip').css("display","none");
 	});
 
 	$(".close1").mouseover(function(e){			
-		var tooltip_user="<div id='tooltip'><font size='3px' color='red'>关闭</font></div>";
+		var tooltip="<div id='tooltip'><font size='3px' color='red'>关闭</font></div>";
 		var x=10;
 		var y=20;
-		$("body").append(tooltip_user);
-		$('#tooltip_user').css({"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px"});
+		$("body").append(tooltip);
+		$('#tooltip').css({"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px"});
 	}).mouseout(function(e){			
-		tooltip_user=$("#tooltip");
-		tooltip_user.remove();
+		tooltip=$("#tooltip");
+		tooltip.remove();
 	});
 
 	
@@ -267,7 +564,6 @@ $(function(){
 				$("#sp_bookquery").hide();
 				$("#sp_bookmod").hide();
 				$("#sp_bookdelete").hide();
-				$('.role').hide();
 				$('.user').show();
 				$('.user').find('.close1').css('display','block');
 			}
@@ -340,85 +636,6 @@ $(function(){
 			$(this).next().hide();
 		});
 
-		$(this).find("#assign").mouseover(function(e){
-			 $(this).css("width","12%");
-                        $(this).next().show();
-                }).mouseout(function(){
-                        $(this).css("width","10%");
-                        $(this).next().hide();
-                });
-
-		
-		$(this).find("#assign").click(function(){
-			var username=$(this).parent().parent().children("td:eq(0)").text();
-			var tooltip="<div  class='little_over'></div><div id='assignrole' class='assignrole'><font size='5px;' color='blue;'>分配角色</font><hr/><strong><font size='3px;' color='black'>用户名称:"+username+"</font></strong></br></br></br></br>";
-			$.ajax({url:'/grouplist/',
-				type:'get',
-				dataType:'json',
-				success:function(data){
-					$.each(data,function(index,item){
-						var dataObj=eval("("+item+")");
-						tooltip+=dataObj.name+"&nbsp;&nbsp;&nbsp;"+"<input type='checkbox' name='grouplist' value="+dataObj.id+">&nbsp;&nbsp;&nbsp;";
-					});
-					tooltip+="</br></br></br></br><input type='button' id='confirm' value='确定'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id='cancle' type='button' value='取消'></div>";
-					$('body').append(tooltip);
-				}
-					
-			})
-					$('.little_over').show();
-					$('.assignrole').show();
-					$.ajax({url:'/usergroup/',
-						type:'post',
-						data:{username:username},
-						dataType:'json',
-						success:function(data){
-							$.each(data,function(index,item){
-								var dataObj=eval("("+item+")");
-								$(".assignrole input:checkbox").each(function(){
-									if($(this).val()==dataObj.id){
-										$(this).attr("checked","true");
-									}
-								});
-							})
-						}
-					})
-
-					$("#assignrole").find("#confirm").click(function(){
-						var addgroup='';
-						var remove='';
-						$("#assignrole input:checkbox").each(function(i){
-							if($(this).is(':checked')){
-								addgroup+=$(this).val()+"*";
-							}else{
-								remove+=$(this).val()+"*";
-							};
-
-								$.ajax({url:'/groupmod/',
-									type:'post',
-									data:{grouplist:addgroup,removelist:remove,username:username},
-									success:function(data){
-										if(data=='success'){
-											var tooltip=$(".little_over");
-											tooltip.remove();
-											var tooltip=$(".assignrole");
-											tooltip.remove();
-										}
-									}
-								});
-
-							
-						});
-					});
-					$("#assignrole").find("#cancle").click(function(){
-						var tooltip=$(".little_over");
-						tooltip.remove();
-						var tooltip=$("#assignrole");
-						tooltip.remove();
-					});
-
-			
-		});
-
 		$(this).find("#delete").mouseover(function(){
 			$(this).css("width","12%");
 			$(this).next().show();})
@@ -431,9 +648,8 @@ $(function(){
 			$('.little_over').css("display","block");
 			var name=$(user).find("#username").html();
 			if(name!="admin"){
-			var tooltip_user="<div class='little_over'></div><div id='tooldelete' style='position:absolute;top:20%;left:50%;width:600px;height:100px;background:gray;border:1px solid lightblue;z-index:1007;'>用户删除<hr/><font color='blue' size='5px'>您是否要删除用户"+name+"?</font><div id='confirm' style='position:absolute;top:80px;left:25%;background:lightblue;height:20px;width:55px;'><span style='cursor:pointer;'>确定</span></div><div id='cancle' style='position:absolute;top:80px;left:55%;background:lightblue;height:20px;width:55px;'><span  style='cursor:pointer;'>取消</span></div></div>";
-			$('body').append(tooltip_user);
-			$('.little_over').css("display","block");
+			var tooltip="<div class='little_over'><div id='tooldelete' style='position:absolute;top:20%;left:50%;width:600px;height:100px;background:gray;border:1px solid lightblue;z-index:1007;'>用户删除<hr/><font color='blue' size='5px'>您是否要删除用户"+name+"?</font><div id='confirm' style='position:absolute;top:80px;left:25%;background:lightblue;height:20px;width:55px;'><span style='cursor:pointer;'>确定</span></div><div id='cancle' style='position:absolute;top:80px;left:55%;background:lightblue;height:20px;width:55px;'><span  style='cursor:pointer;'>取消</span></div></div></div>";
+			$('body').append(tooltip);
 			$("#tooldelete").css("display","block");
 			$("#tooldelete").find("#confirm").mouseover(function(){
 				$(this).addClass("addborder");
@@ -477,8 +693,8 @@ $(function(){
 						if(data=="success"){
 						$("#tooldelete").remove();
 						$(".little_over").remove();
-						tooltip_user="<div id='message' style='top:1px;left:100%;background:yellow;opacity;width:100px;heght:100px;z-index:1006;'>删除成功!</div>";
-						$('body').append(tooltip_user);
+						tooltip="<div id='message' style='top:1px;left:100%;background:yellow;opacity;width:100px;heght:100px;z-index:1006;'>删除成功!</div>";
+						$('body').append(tooltip);
 						$("#message").fadeTo("slow",0.5);
 						$.post("/accounts/profile/",{page:1,rows:10},function(data){
                                                         $('body').html(data);
@@ -503,8 +719,8 @@ $(function(){
 		var that=this;
 		$(this).find("#edit").click(function(i){
 			var name=$(that).find("#username").html();
-			var tooltip_user="<div class='little_over'></div><div class='edit_window'><span align='left'><font align='left;' size='5px;' color='black'>编辑用户</font></span><hr/><div style='font-align:left;overflow:yes;'>用户名称:"+name+"<hr/>禁用/启用:<input type='checkbox' id='stats'/><div style='position:absolute;top:275px;left:25%;background:lightblue;height:20px;width:55px;'><span id='confirm' style='cursor:pointer;'>确定</span></div><div style='position:absolute;top:275px;left:55%;background:lightblue;height:20px;width:55px;'><span id='cancle' style='cursor:pointer;'>取消</span></div></div>";
-			$('body').append(tooltip_user);
+			var tooltip="<div class='little_over'></div><div class='edit_window'><span align='left'><font align='left;' size='5px;' color='black'>编辑用户</font></span><hr/><div style='font-align:left;overflow:yes;'>用户名称:"+name+"<hr/>禁用/启用:<input type='checkbox' id='stats'/><div style='position:absolute;top:275px;left:25%;background:lightblue;height:20px;width:55px;'><span id='confirm' style='cursor:pointer;'>确定</span></div><div style='position:absolute;top:275px;left:55%;background:lightblue;height:20px;width:55px;'><span id='cancle' style='cursor:pointer;'>取消</span></div></div>";
+			$('body').append(tooltip);
 			$('.little_over').css('display','block');
 			$('.edit_window').css('display','block');
 			var status=$(that).find("#status").html();
@@ -532,8 +748,8 @@ $(function(){
 						if(data=="success"){
 							$(".edit_window").remove();
 							$(".little_over").remove();
-							tooltip_user="<div id='message' style='top:1px;left:100%;background:yellow;opacity;width:100px;heght:100px;z-index:1006;'>保存成功!</div>";
-							$('body').append(tooltip_user);
+							tooltip="<div id='message' style='top:1px;left:100%;background:yellow;opacity;width:100px;heght:100px;z-index:1006;'>保存成功!</div>";
+							$('body').append(tooltip);
 							$("#message").fadeTo("slow",0.5);
 							window.parent.location.reload();
 						}
@@ -551,8 +767,8 @@ $(function(){
 
 
 	$(".button_adduser").click(function(){
-		var tooltip_user="<div class='little_over'></div><div class='adduser'><font size='5px;' color='blue;'><span>新增用户</span></font><hr/><table><tr><td><label for='username'>用户名</lable></td><td><input type='text' placeholder='用户名' id='username' required></td></tr><tr><td><label for='email'>邮箱:</lable></td><td><input type='text' id='email' placeholder='用户邮箱,例如test@haha.com' required></td></tr><tr><td><label for='password'>密码:</lable></td><td><input type='password' id='password' placeholder='用户密码' required></td></tr><tr><td><label for='rept'>再输入密码:</lable></td><td><input type='password' id='reptpass' placeholder='再次输入用户密码' required></td></tr><tr><td><input type='button' id='confirm' value='确定'></td><td><input id='cancle' type='button' value='取消'></td></tr></table><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
-		$('body').append(tooltip_user);
+		var tooltip="<div class='little_over'></div><div class='adduser'><font size='5px;' color='blue;'><span>新增用户</span></font><hr/><table><tr><td><label for='username'>用户名</lable></td><td><input type='text' placeholder='用户名' id='username' required></td></tr><tr><td><label for='email'>邮箱:</lable></td><td><input type='text' id='email' placeholder='用户邮箱,例如test@haha.com' required></td></tr><tr><td><label for='password'>密码:</lable></td><td><input type='password' id='password' placeholder='用户密码' required></td></tr><tr><td><label for='rept'>再输入密码:</lable></td><td><input type='password' id='reptpass' placeholder='再次输入用户密码' required></td></tr><tr><td><input type='button' id='confirm' value='确定'></td><td><input id='cancle' type='button' value='取消'></td></tr></table><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
+		$('body').append(tooltip);
 		$(".little_over").css("display","block");
 		$(".adduser").css("display","block");
 		$(".close1").css("display","block");
@@ -647,10 +863,10 @@ $(function(){
 					};
 					if(data==4){
 						alert("添加用户成功!");
-						var tooltip_user=$('.little_over');
-						tooltip_user.remove();
-						var tooltip_user=$('.adduser');
-						tooltip_user.remove();
+						var tooltip=$('.little_over');
+						tooltip.remove();
+						var tooltip=$('.adduser');
+						tooltip.remove();
 						$.post("/accounts/profile/",{page:1,rows:10},function(data){
 							$('body').html(data);
 							$('.all_over').css("display","block");
@@ -664,16 +880,16 @@ $(function(){
 
 		
 		$(".adduser").find("#cancle").click(function(){
-			var tooltip_user=$('.little_over');
-			tooltip_user.remove();
-			var tooltip_user=$('.adduser');
-			tooltip_user.remove();
+			var tooltip=$('.little_over');
+			tooltip.remove();
+			var tooltip=$('.adduser');
+			tooltip.remove();
 		});
 		$(".adduser").find(".close1").click(function(){
-			var tooltip_user=$('.little_over');
-			tooltip_user.remove();
-			var tooltip_user=$('.adduser');
-			tooltip_user.remove();
+			var tooltip=$('.little_over');
+			tooltip.remove();
+			var tooltip=$('.adduser');
+			tooltip.remove();
 		});
 
 		$(".adduser").find(".close1").mouseover(function(){
@@ -696,8 +912,8 @@ $(function(){
 		var username=$("#userlist").find(".tablecolor").children("td:eq(0)");
 		var email=$("#userlist").find(".tablecolor").children("td:eq(1)");
 		if(username.length>0){
-			var tooltip_user="<div class='little_over'></div><div class='edituser'><font size='5px;' color='lightblue;'>用户编辑</font><hr/><font size='5px;'>用户名:&nbsp;&nbsp;"+username.text()+"</font></br>邮箱地址:<input type='text' id='email' value="+email.text()+"></br></br></br></br></br><input type='button' value='确定' id='confirm'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='取消' id='cancle'><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
-			$('body').append(tooltip_user);
+			var tooltip="<div class='little_over'></div><div class='edituser'><font size='5px;' color='lightblue;'>用户编辑</font><hr/><font size='5px;'>用户名:&nbsp;&nbsp;"+username.text()+"</font></br>邮箱地址:<input type='text' id='email' value="+email.text()+"></br></br></br></br></br><input type='button' value='确定' id='confirm'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='取消' id='cancle'><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
+			$('body').append(tooltip);
 			$(".little_over").css("display","block");
 			$(".edituser").css("display","block");
 			$(".edituser .close1").css("display","block");
@@ -712,10 +928,10 @@ $(function(){
 						success:function(data){
 							if(data=='1'){
 								alert("更新地址成功")
-								var tooltip_user=$(".little_over");
-								tooltip_user.remove();
-								var tooltip_user=$(".edituser");
-								tooltip_user.remove();
+								var tooltip=$(".little_over");
+								tooltip.remove();
+								var tooltip=$(".edituser");
+								tooltip.remove();
 							}
 							if(data=='2'){
 								alert("该邮箱已被其他用户使用")
@@ -728,18 +944,18 @@ $(function(){
 
 
 			$(".edituser").find("#cancle").click(function(){
-				var tooltip_user=$(".little_over");
-				tooltip_user.remove();
-				var tooltip_user=$(".edituser");
-				tooltip_user.remove();
+				var tooltip=$(".little_over");
+				tooltip.remove();
+				var tooltip=$(".edituser");
+				tooltip.remove();
 			})
 
 
 			$(".edituser .close1").click(function(){
-				var tooltip_user=$(".little_over");
-				tooltip_user.remove();
-				var tooltip_user=$(".edituser");
-				tooltip_user.remove();
+				var tooltip=$(".little_over");
+				tooltip.remove();
+				var tooltip=$(".edituser");
+				tooltip.remove();
 			})
 		}else{
 			alert("您必须选择一条数据!")
@@ -763,8 +979,8 @@ $(function(){
 	$(".resetpasswd").click(function(){
 		var username=$("#userlist").find(".tablecolor").children("td:eq(0)");
 		if(username.length>0){
-		var tooltip_user="<div class='little_over'></div><div class='editpasswd'><font size='5px;' color='lightblue;'>重置密码</font><hr/><font size='5px;'>用户名:&nbsp;&nbsp;"+username.text()+"</font></br>重置密码:<input type='password' placeholder='新密码' id='password' required></br>密码确认:<input type='password' placeholder='再输入一次新密码' id='reptpasswd' required></br></br></br></br><input type='button' value='确定' id='confirm'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='取消' id='cancle'><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
-		$('body').append(tooltip_user);
+		var tooltip="<div class='little_over'></div><div class='editpasswd'><font size='5px;' color='lightblue;'>重置密码</font><hr/><font size='5px;'>用户名:&nbsp;&nbsp;"+username.text()+"</font></br>重置密码:<input type='password' placeholder='新密码' id='password' required></br>密码确认:<input type='password' placeholder='再输入一次新密码' id='reptpasswd' required></br></br></br></br><input type='button' value='确定' id='confirm'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='取消' id='cancle'><div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div></div>";
+		$('body').append(tooltip);
 		$(".little_over").css("display","block");
 		$(".editpasswd").css("display","block");
 		$(".editpasswd .close1").css("display","block");
@@ -815,10 +1031,10 @@ $(function(){
 				success:function(data){
 					if(data==3){
 						alert("密码更新成功!");
-						var tooltip_user=$(".little_over");
-						tooltip_user.remove();
-						var tooltip_user=$(".editpasswd");
-						tooltip_user.remove();
+						var tooltip=$(".little_over");
+						tooltip.remove();
+						var tooltip=$(".editpasswd");
+						tooltip.remove();
 					}
 				}
 				})
@@ -826,18 +1042,18 @@ $(function(){
 
 
 		$(".editpasswd").find("#cancle").click(function(){
-			var tooltip_user=$(".little_over");
-			tooltip_user.remove();
-			var tooltip_user=$(".editpasswd");
-			tooltip_user.remove();
+			var tooltip=$(".little_over");
+			tooltip.remove();
+			var tooltip=$(".editpasswd");
+			tooltip.remove();
 		})
 
 
 		$(".editpasswd .close1").click(function(){
-			var tooltip_user=$(".little_over");
-			tooltip_user.remove();
-			var tooltip_user=$(".editpasswd");
-			tooltip_user.remove();
+			var tooltip=$(".little_over");
+			tooltip.remove();
+			var tooltip=$(".editpasswd");
+			tooltip.remove();
 		})
 
 		}else{
@@ -856,8 +1072,8 @@ $(function(){
 	$('.deleteuser').click(function(){
 		var username=$("#userlist").find(".tablecolor").children("td:eq(0)");
 		if (username.length>0 && username.text()!='admin'){
-		var tooltip_user="<div class='little_over'></div><div id='deleteuser' style='position:absolute;top:20%;left:50%;width:600px;height:100px;background:gray;border:1px solid lightblue;z-index:1007;'>用户删除<hr/><font color='blue' size='5px'>您是否要删除用户"+username.text()+"?</font><div id='confirm' style='position:absolute;top:80px;left:25%;background:lightblue;height:20px;width:55px;'><span style='cursor:pointer;'>确定</span></div><div id='cancle' style='position:absolute;top:80px;left:55%;background:lightblue;height:20px;width:55px;'><span  style='cursor:pointer;'>取消</span></div></div>";
-		$('body').append(tooltip_user);
+		var tooltip="<div class='little_over'></div><div id='deleteuser' style='position:absolute;top:20%;left:50%;width:600px;height:100px;background:gray;border:1px solid lightblue;z-index:1007;'>用户删除<hr/><font color='blue' size='5px'>您是否要删除用户"+username.text()+"?</font><div id='confirm' style='position:absolute;top:80px;left:25%;background:lightblue;height:20px;width:55px;'><span style='cursor:pointer;'>确定</span></div><div id='cancle' style='position:absolute;top:80px;left:55%;background:lightblue;height:20px;width:55px;'><span  style='cursor:pointer;'>取消</span></div></div>";
+		$('body').append(tooltip);
 		$(".little_over").css('display','block');
 
 		var _move=false;
@@ -882,19 +1098,18 @@ $(function(){
 		$("#deleteuser").find("#confirm").click(function(){
 			$.ajax({url:"/dropuser/",
 				type:'post',
-				data:{username:username.text()},
+				data:{user:username.text()},
 				success:function(data){
 					if(data=="success"){
-						alert("删除角色!");
-						var tooltip_user=$(".little_over");
-						tooltip_user.remove();
-						var tooltip_user=$("#deleteuser");
-						tooltip_user.remove();
-						$.ajax({url:'/addrole/',
-							type:'get',
-							dataType:'json',
-							success:function(data){
-							}
+						alert("删除用户成功!");
+						var tooltip=$(".little_over");
+						tooltip.remove();
+						var tooltip=$("#deleteuser");
+						tooltip.remove();
+						$.post("/accounts/profile/",{page:1,rows:10},function(data){
+							$('body').html(data);
+							$('.all_over').css("display","block");
+							$('.user').css('display','block');
 						})
 					}
 					if(data=="failed"){
@@ -907,10 +1122,10 @@ $(function(){
 
 
 		$("#deleteuser").find("#cancle").click(function(){
-			var tooltip_user=$(".little_over");
-			tooltip_user.remove();
-			var tooltip_user=$("#deleteuser");
-			tooltip_user.remove();
+			var tooltip=$(".little_over");
+			tooltip.remove();
+			var tooltip=$("#deleteuser");
+			tooltip.remove();
 		});
 		}else{
 			if(username.text()=='admin'){
@@ -1284,7 +1499,7 @@ $(function(){
 			<tr style="background-color:gray;"><td width="200px;" align="center">用户名称</td><td width="200px" align="center">注册邮箱</td><td width="200px;" align="center">状态</td><td width="200px;">最后一次登录时间</td><td width="200px;">操作</td></tr>
 			{% if results %}
 				{%for res in results%}
-			<tr><td width="200px;" id="username" align="center">{{res.name}}</td><td width="200px" align="center">{{res.email}}</td><td width="200px;" align="center" id="status">{{res.status}}</td><td width="200px;">{{res.last_login}}</td><td width="200px;"><img id="edit" width="10%" src="/js/edit.jpg"><span id="editbutton" style="display:none;cursor:pointer;">禁用/启用</span>&nbsp;<img id="assign" width="11%" src="/js/add.jpg"><span id="deletebutton" style="display:none;cursor:pointer;">分配角色</span><img id="delete" width="11%" src="/js/delete.png"><span id="deletebutton" style="display:none;cursor:pointer;">删除用户</span></td></tr>
+			<tr><td width="200px;" id="username" align="center">{{res.name}}</td><td width="200px" align="center">{{res.email}}</td><td width="200px;" align="center" id="status">{{res.status}}</td><td width="200px;">{{res.last_login}}</td><td width="200px;"><img id="edit" width="10%" src="/js/edit.jpg"><span id="editbutton" style="display:none;cursor:pointer;">编辑用户</span>&nbsp;<img id="delete" width="11%" src="/js/delete.png"><span id="deletebutton" style="display:none;cursor:pointer;">删除用户</span></td></tr>
 				{%endfor%}
 			{%endif%}
 			
@@ -1313,36 +1528,6 @@ $(function(){
 	</div>
 	<div class="marked" id="marked">
 		<span style="font-size:16px;cursor:default;font-weight:bold">关闭</span>
-	</div>
-
-	<div class="role" id="role"> <font style="font-weight:bold;font-size:18px;color:blue;" align="right">角色管理</font><hr/>
-		<div class="button_addrole">添加角色</div>
-		<div class="button_editrole">角色编辑</div>
-		<div class="Assign">分配权限</div>
-		<div class="deleterole">删除</div>
-		<div class="roles">
-			<div class="rolelist">
-				<font style="font-size:13px;font-weight:bold;">角色列表</font>
-			</div>
-			</br>
-			<table id="rolelist" border="1" cellpadding="0" cellspacing="0">
-			<tr style="background-color:gray;"><td width="200px;" align="center">角色名称</td><td width="200px" align="center">角色描述</td><td width="200px;" align="center">所属用户</td><td width="200px;">创建时间</td><td width="200px;">操作</td></tr>
-			</table>
-		</div>
-		<div class="bottom_role">
-                        <select style="width:50px;height:29px;" name="select" id="limits">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                        </select>
-                        <input type="button" id="startpage" value="首页">
-                        <input type="button" id="privpage" value="前一页">
-                        第<input type="text" id="page" value="1" placeholder="1" size="1px;">页 共 {{ pages }} 页
-			<input type="hidden" id="hidden" value={{pages}}>
-                        <input type="button" id="nextpage" value="下一页">
-                        <input type="button" id="endpage" value="尾页">
 	</div>
 </div>
 <script language="javascript">

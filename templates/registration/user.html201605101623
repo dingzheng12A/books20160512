@@ -340,85 +340,6 @@ $(function(){
 			$(this).next().hide();
 		});
 
-		$(this).find("#assign").mouseover(function(e){
-			 $(this).css("width","12%");
-                        $(this).next().show();
-                }).mouseout(function(){
-                        $(this).css("width","10%");
-                        $(this).next().hide();
-                });
-
-		
-		$(this).find("#assign").click(function(){
-			var username=$(this).parent().parent().children("td:eq(0)").text();
-			var tooltip="<div  class='little_over'></div><div id='assignrole' class='assignrole'><font size='5px;' color='blue;'>分配角色</font><hr/><strong><font size='3px;' color='black'>用户名称:"+username+"</font></strong></br></br></br></br>";
-			$.ajax({url:'/grouplist/',
-				type:'get',
-				dataType:'json',
-				success:function(data){
-					$.each(data,function(index,item){
-						var dataObj=eval("("+item+")");
-						tooltip+=dataObj.name+"&nbsp;&nbsp;&nbsp;"+"<input type='checkbox' name='grouplist' value="+dataObj.id+">&nbsp;&nbsp;&nbsp;";
-					});
-					tooltip+="</br></br></br></br><input type='button' id='confirm' value='确定'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id='cancle' type='button' value='取消'></div>";
-					$('body').append(tooltip);
-				}
-					
-			})
-					$('.little_over').show();
-					$('.assignrole').show();
-					$.ajax({url:'/usergroup/',
-						type:'post',
-						data:{username:username},
-						dataType:'json',
-						success:function(data){
-							$.each(data,function(index,item){
-								var dataObj=eval("("+item+")");
-								$(".assignrole input:checkbox").each(function(){
-									if($(this).val()==dataObj.id){
-										$(this).attr("checked","true");
-									}
-								});
-							})
-						}
-					})
-
-					$("#assignrole").find("#confirm").click(function(){
-						var addgroup='';
-						var remove='';
-						$("#assignrole input:checkbox").each(function(i){
-							if($(this).is(':checked')){
-								addgroup+=$(this).val()+"*";
-							}else{
-								remove+=$(this).val()+"*";
-							};
-
-								$.ajax({url:'/groupmod/',
-									type:'post',
-									data:{grouplist:addgroup,removelist:remove,username:username},
-									success:function(data){
-										if(data=='success'){
-											var tooltip=$(".little_over");
-											tooltip.remove();
-											var tooltip=$(".assignrole");
-											tooltip.remove();
-										}
-									}
-								});
-
-							
-						});
-					});
-					$("#assignrole").find("#cancle").click(function(){
-						var tooltip=$(".little_over");
-						tooltip.remove();
-						var tooltip=$("#assignrole");
-						tooltip.remove();
-					});
-
-			
-		});
-
 		$(this).find("#delete").mouseover(function(){
 			$(this).css("width","12%");
 			$(this).next().show();})
@@ -433,7 +354,6 @@ $(function(){
 			if(name!="admin"){
 			var tooltip_user="<div class='little_over'></div><div id='tooldelete' style='position:absolute;top:20%;left:50%;width:600px;height:100px;background:gray;border:1px solid lightblue;z-index:1007;'>用户删除<hr/><font color='blue' size='5px'>您是否要删除用户"+name+"?</font><div id='confirm' style='position:absolute;top:80px;left:25%;background:lightblue;height:20px;width:55px;'><span style='cursor:pointer;'>确定</span></div><div id='cancle' style='position:absolute;top:80px;left:55%;background:lightblue;height:20px;width:55px;'><span  style='cursor:pointer;'>取消</span></div></div>";
 			$('body').append(tooltip_user);
-			$('.little_over').css("display","block");
 			$("#tooldelete").css("display","block");
 			$("#tooldelete").find("#confirm").mouseover(function(){
 				$(this).addClass("addborder");
@@ -506,7 +426,7 @@ $(function(){
 			var tooltip_user="<div class='little_over'></div><div class='edit_window'><span align='left'><font align='left;' size='5px;' color='black'>编辑用户</font></span><hr/><div style='font-align:left;overflow:yes;'>用户名称:"+name+"<hr/>禁用/启用:<input type='checkbox' id='stats'/><div style='position:absolute;top:275px;left:25%;background:lightblue;height:20px;width:55px;'><span id='confirm' style='cursor:pointer;'>确定</span></div><div style='position:absolute;top:275px;left:55%;background:lightblue;height:20px;width:55px;'><span id='cancle' style='cursor:pointer;'>取消</span></div></div>";
 			$('body').append(tooltip_user);
 			$('.little_over').css('display','block');
-			$('.edit_window').css('display','block');
+	//		$('.edit_window').css('display','block');
 			var status=$(that).find("#status").html();
 			if(name=="admin"){
 				$(".edit_window input[type='checkbox']").attr("disabled","true");
@@ -1284,7 +1204,7 @@ $(function(){
 			<tr style="background-color:gray;"><td width="200px;" align="center">用户名称</td><td width="200px" align="center">注册邮箱</td><td width="200px;" align="center">状态</td><td width="200px;">最后一次登录时间</td><td width="200px;">操作</td></tr>
 			{% if results %}
 				{%for res in results%}
-			<tr><td width="200px;" id="username" align="center">{{res.name}}</td><td width="200px" align="center">{{res.email}}</td><td width="200px;" align="center" id="status">{{res.status}}</td><td width="200px;">{{res.last_login}}</td><td width="200px;"><img id="edit" width="10%" src="/js/edit.jpg"><span id="editbutton" style="display:none;cursor:pointer;">禁用/启用</span>&nbsp;<img id="assign" width="11%" src="/js/add.jpg"><span id="deletebutton" style="display:none;cursor:pointer;">分配角色</span><img id="delete" width="11%" src="/js/delete.png"><span id="deletebutton" style="display:none;cursor:pointer;">删除用户</span></td></tr>
+			<tr><td width="200px;" id="username" align="center">{{res.name}}</td><td width="200px" align="center">{{res.email}}</td><td width="200px;" align="center" id="status">{{res.status}}</td><td width="200px;">{{res.last_login}}</td><td width="200px;"><img id="edit" width="10%" src="/js/edit.jpg"><span id="editbutton" style="display:none;cursor:pointer;">编辑用户</span>&nbsp;<img id="delete" width="11%" src="/js/delete.png"><span id="deletebutton" style="display:none;cursor:pointer;">删除用户</span></td></tr>
 				{%endfor%}
 			{%endif%}
 			
@@ -1329,7 +1249,7 @@ $(function(){
 			<tr style="background-color:gray;"><td width="200px;" align="center">角色名称</td><td width="200px" align="center">角色描述</td><td width="200px;" align="center">所属用户</td><td width="200px;">创建时间</td><td width="200px;">操作</td></tr>
 			</table>
 		</div>
-		<div class="bottom_role">
+		<div class="bottom">
                         <select style="width:50px;height:29px;" name="select" id="limits">
                                 <option value="10">10</option>
                                 <option value="20">20</option>

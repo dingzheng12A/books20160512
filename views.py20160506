@@ -4,8 +4,6 @@ from django.shortcuts import render_to_response,render
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.models import Group
-from haha.books.models import newgroup
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from haha.forms import RegForm,PassForm,FlatPageForm,AddBook,AddUser
@@ -19,7 +17,6 @@ import sys
 import xlwt
 import xlrd
 import re
-import json
 from xlrd import xldate_as_tuple
 from haha.forms import uploadform
 reload(sys)
@@ -956,7 +953,7 @@ def edituser(request):
 			return HttpResponse(3)					#更新密码成功
 	return HttpResponse("........................")
 
-def statusquery(request):
+def query(request):
 	if 'name' in request.POST:
 		name=request.POST.get('name')
 	sql="select username,email,is_active,last_login from auth_user"
@@ -973,109 +970,4 @@ def statusquery(request):
                 results.append({'name':infor[0],'email':infor[1],'status':status,'last_login':infor[3]})	
 	return HttpResponse(results)
 
-def query():
-	conn=MySQLdb.connect(host='localhost',user='root',passwd='redhat',port=3306,db='haha',charset='utf8')
-	cursor=conn.cursor()
-	sql="select name,description,updatetime from auth_group a inner join books_newgroup b on a.id=b.group_id;"
-	cursor.execute(sql)
-	infors=cursor.fetchall()
-	results=[]
-	for infor in infors:
-		result={}
-		result["name"]=infor[0]
-		result["description"]=infor[1]
-		result["updatetime"]=str(infor[2])
-		results.append(json.dumps(result))
-	return results
-		
 
-def addrole(request):
-	if 'rolename' in request.POST and 'roledesc' in request.POST and 'action' in request.POST:
-		times=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-		rolename=request.POST.get('rolename')
-		action=request.POST.get('action')
-		roledesc=request.POST.get('roledesc')
-		if action=='1':
-			group=Group.objects.filter(name=rolename)
-			if len(group)>0:
-				return HttpResponse(4)                                                    #角色已经存在，然后4
-			groups=newgroup.objects.create(name=rolename,description=roledesc,updatetime=times)
-			groups.save()
-			data=query()
-			return HttpResponse(json.dumps(data))
-
-		if action=='2':
-			newrole=request.POST.get('newrolename')
-			if len(newrole)>0:
-				group=Group.objects.filter(name=newrole)
-				if len(group)>0:
-					return HttpResponse(4)
-				else:
-					groups=newgroup.objects.get(name=rolename)
-					groups.name=newrole
-					groups.description=roledesc
-					groups.save()
-			else:
-				groups=newgroup.objects.get(name=rolename)
-				groups.description=roledesc
-				groups.save()
-			data=query()
-			return HttpResponse(json.dumps(data))
-	if 'rolename' in request.POST and 'action' in request.POST:
-		rolename=request.POST.get('rolename')
-		action=request.POST.get('action')
-		if action=='3':
-			groups=newgroup.objects.get(name=rolename)
-			groups.delete()
-			data=query()
-			return HttpResponse(json.dumps(data))
-					
-	data=query()
-	return HttpResponse(json.dumps(data))
-
-	
-def grouplist(request):
-	group=Group.objects.all()
-	results=[]
-	for i in group:
-		result={}
-		result['id']=i.id
-		result['name']=i.name
-		results.append(json.dumps(result))
-	return HttpResponse(json.dumps(results))
-
-
-def usergroup(request):
-	if request.method=='POST':
-		username=request.POST.get('username')
-		user=User.objects.get(username=username)
-		group=user.groups.get_query_set()
-		results=[]
-		for i in group:
-			result={}
-			result['id']=i.id
-			results.append(json.dumps(result))
-		return HttpResponse(json.dumps(results))
-	return HttpResponse("....................")
-
-
-
-def groupmod(request):
-	if request.method=='POST':
-		grouplist=request.POST.get('grouplist')
-		removelist=request.POST.get('removelist')
-		username=request.POST.get('username')
-		user=User.objects.get(username=username)
-		if len(grouplist):
-			for i in grouplist.split('*'):
-				if len(i):
-					group=Group.objects.get(id=i)
-					user.groups.add(group)
-		if len(removelist):
-			for i in removelist.split('*'):
-				if len(i):
-					group=Group.objects.get(id=i)
-					user.groups.remove(group)
-			
-		return HttpResponse("success")
-	return HttpResponse("...................")

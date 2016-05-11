@@ -110,3 +110,20 @@ class AddBook(forms.Form):
 
 class uploadform(forms.Form):
 	files=forms.FileField(label='导入文件')	
+
+
+
+class AddUser(forms.Form):
+	username=forms.CharField(max_length=50,label="用户名",required=True)
+	email=forms.EmailField(label="邮箱地址",required=True)
+	passwd=forms.CharField(max_length=50,label="输入密码",widget=forms.PasswordInput)
+	reptpass=forms.CharField(max_length=50,label="再输入一次密码",widget=forms.PasswordInput)
+
+
+
+
+	def clean_username(self):
+		username=self.cleaned_data['username']	
+		users=User.objects.filter(username=username)
+		if users is not None:
+			raise forms.ValidationError("用户名已存在")

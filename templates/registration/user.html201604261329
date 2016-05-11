@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<!--把下面代码加到<head>与</head>之间-->
+<style type="text/css">
+body,html{padding:0;margin:0;text-align:center;font:normal 14px 'arial';}
+#mainNavBar{width:100%;background:#999;padding:10px 0; z-index:1005;}
+#nav{width:760px;height:30px;margin:0 auto; z-index:1005}
+#nav ul{padding:0;margin:0;}
+#nav ul li{position:relative;float:left;width:60px;height:30px;line-height:30px;overflow:hidden;list-style-type:none;}
+#nav ul li a{display:block;color:#fff;text-decoration:none;}
+#nav ul li a{display:block;color:#fff;text-decoration:none;}
+#subNav{position:absolute;width:150px;top:30px;left:0px;padding:5px;background:#666;color:#fff;text-align:left;z-index:1005;}
+#subNav a{text-decoration:none;font-weight:normal;display:block;}
+#subNav a:hover{color:#f00;background:#f00;}
+.title{
+	display:block;
+	position:absolute;
+	top:0%;
+	left:0%;
+
+}
+.all_over{
+	display:none;
+	position:absolute;
+	top:47px;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	-moz-opacity:0.8;
+	filter:alpha(opacity=80);
+	z-index:1001;
+	
+}
+.close{
+	display:none;
+	position:absolute;
+	top:20%;
+	left:76.7%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 2px solid lightblue;
+	z-index: 1005;
+}
+.post{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:75%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+
+.cancle{
+	display:none;
+	position:absolute;
+	top:86%;
+	left:90%;
+	width:60px;
+	height:25px;
+	background:blue;
+	border: 1px solid lightblue;
+	z-index 1003;
+}
+.borders{
+	display:none;
+	position:absolute;
+	top:20%;
+	left:10%;
+	width:70%;
+	height:70%;
+	background:white;
+	border: 10px solid lightblue;
+	z-index:1002;
+}
+.addbook{
+	display:none;
+	position:absolute;
+	top:10;
+	left:50;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1003;
+	text-align:center;
+}
+.bookquery{
+	display:none;
+	position:absolute;
+	top:10;
+	left:50;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1004;
+	text-align:center;
+}
+.bookdelete{
+	display:none;
+	position:absolute;
+	top:10;
+	left:50;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1005;
+	text-align:center;
+}
+.bookmod{
+	display:none;
+	position:absolute;
+	top:10;
+	left:50;
+	width:100%;
+	height:100%;
+	border:1px solid black;
+	z-index:1006;
+	text-align:center;
+}
+</style>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.close').click(function(){
+		$('.all_over').css("display","none");
+		$('.borders').css("display","none");
+		$('.close').css("display","none");
+		$('.addbook').css("display","none");
+		$('.bookquery').css("display","none");
+		$('.bookdelete').css("display","none");
+		$('.bookmod').css("display","none");
+
+	});
+	$('.close').mouseover(function(){
+		$('.close').css("background","lightblue");
+	});
+	$('.close').mouseout(function(){
+		$('.close').css("background","blue");
+	});
+	$('#addbook').click(function(){
+		$('.all_over').css("display","block");
+		$('.borders').css("display","block");
+		$('.close').css("display","block");
+		$('.addbook').css("display","block");
+		$("#ifr_addbook").show();
+		$("#ifr_bookquery").hide();
+		$("#ifr_bookdelete").hide();
+		$("#ifr_bookmod").hide();
+		
+		
+	});		
+	$('#bookquery').click(function(){
+		$('.all_over').css("display","block");
+		$('.borders').css("display","block");
+		$('.close').css("display","block");
+		$('.addbook').css("display","block");
+		$("#ifr_addbook").hide();
+		$("#ifr_bookquery").show();
+		$("#ifr_bookdelete").hide();
+		$("#ifr_bookmod").hide();
+		
+		
+	});		
+	$('#bookmod').click(function(){
+		$('.all_over').css("display","block");
+		$('.borders').css("display","block");
+		$('.close').css("display","block");
+		$('.addbook').css("display","block");
+		$("#ifr_addbook").hide();
+		$("#ifr_bookquery").hide();
+		$("#ifr_bookdelete").hide();
+		$("#ifr_bookmod").show();
+		
+		
+	});		
+	$('#bookdelete').click(function(){
+		$('.all_over').css("display","block");
+		$('.borders').css("display","block");
+		$('.close').css("display","block");
+		$('.addbook').css("display","block");
+		$("#ifr_addbook").hide();
+		$("#ifr_bookquery").hide();
+		$("#ifr_bookdelete").show();
+		$("#ifr_bookmod").hide();
+		
+		
+	});		
+});
+</script>
+</head>
+<body>
+<div id="mainNavBar">
+<div class="title">欢迎用户 <font color="red">{{user.username}}</font> 登录 ！</div>
+<div id="nav">
+<ul>
+<li>
+<a href="#">添加</a>
+<div id="subNav">
+<a id="addbook"  href="#">添加图书</a>
+<a id="bookquery" href="#">查询图书</a>
+</div>
+</li>
+<li>
+<a href="#">编辑</a>
+<div id="subNav">
+<a id="bookmod" href="#">编辑图书</a>
+<a id="bookdelete" href="#">删除图书</a>
+</div>
+</li>
+<li>
+<a href="#">管理</a>
+<div id="subNav">
+<a href="#" id="permission">权限管理</a>
+<a href="#">更改用户密码</a>
+<a OnClick="changepass();" href="#">修改密码</a>
+<a href="/accounts/logout">退出</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="all_over" id="all_over">
+	<div class="borders">
+		<div class="addbook">
+			<iframe id="ifr_addbook" align="center" src="/addbook/"  width="100%" height="100%" scrolling="no" style="border:none; display:none;"></iframe>
+			<iframe id="ifr_bookquery" align="center" src="/booklist/?page=0"  width="100%" height="100%" scrolling="no" style="border:none; display:none"></iframe>
+			<iframe id="ifr_bookmod" align="center" src="/bookmod/"  width="100%" height="100%" scrolling="no" style="border:none; display:none"></iframe>
+			<iframe id="ifr_bookdelete" align="center" src="/deletebook/"  width="100%" height="100%" scrolling="no" style="border:none; display:none"></iframe>
+		</div>
+		<div class="bookquery">
+		</div>
+		<div class="bookdelete">
+		</div>
+		<div class="bookdmod">
+		</div>
+	</div>
+	<div class="close" id="close">
+		<span style="font-size:16px;cursor:default;font-weight:bold">关闭</span>
+	</div>
+</div>
+<script language="javascript">
+var nav=document.getElementById("nav").getElementsByTagName("li");
+for(i=0;i<nav.length;i++){
+nav[i].onmouseover=function(){
+this.style.fontWeight="bold";
+this.style.overflow="visible";
+this.style.background="#666666";
+}
+nav[i].onmouseout=function(){
+this.style.fontWeight="normal";
+this.style.background="#999999"
+this.style.overflow="hidden";
+}
+}
+var nav2=document.getElementById("subNav").getElementsByTagName("li");
+for(i=0;i<nav2.length;i++){
+nav2[i].onmouseover=function(){
+this.style.fontWeight="bold";
+this.style.overflow="visible";
+this.style.background="#666666";
+}
+nav2[i].onmouseout=function(){
+this.style.fontWeight="normal";
+this.style.background="#999999"
+this.style.overflow="hidden";
+}
+}
+</script>
+</form>
+</body>
+</html>
