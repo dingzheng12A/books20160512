@@ -5,6 +5,8 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from haha.books.models import newgroup
 from django.contrib.auth import authenticate
 from django.contrib import auth
@@ -622,7 +624,7 @@ def dels(request):
 
 
 
-
+@login_required
 def excel(request):
 	wb=xlwt.Workbook()
 	ws=wb.add_sheet('Sheetname',cell_overwrite_ok=True)	
@@ -670,7 +672,7 @@ def excel(request):
 	wb.save(response)
 	return response
 
-
+@login_required
 def export(request):
 	reload(sys)
 	sys.setdefaultencoding('utf-8')
@@ -772,6 +774,7 @@ def export(request):
 
 
 
+@login_required
 def upload(f):
 	filename=f.name
 	destination=open("upload/%s" % filename,'wb+')
@@ -780,6 +783,7 @@ def upload(f):
 	destination.close()
 
 
+@login_required
 def open_excel(file):
 	try:
 		data=xlrd.open_workbook(file)
@@ -856,6 +860,7 @@ def batchs(request):
 
 
 
+@login_required
 def wocao(request):
 	conn=MySQLdb.connect(host='localhost',user='root',passwd='redhat',port=3306,db='haha',charset='utf8')
 	cursor=conn.cursor()
@@ -872,6 +877,7 @@ def wocao(request):
 
 
 
+@login_required
 def ttt(request):
 	if request.method=='POST':
 		a=request.POST.get('a')
@@ -899,6 +905,7 @@ def auths(request):
 
 
 
+@login_required
 def dropuser(request):
 	if request.method=='POST':
 		username=request.POST.get('user')
@@ -912,6 +919,7 @@ def dropuser(request):
 
 
 
+@login_required
 def adduser(request):
 	if request.method=='POST':
 		username=request.POST.get('username')
@@ -933,6 +941,7 @@ def adduser(request):
 
 
 
+@login_required
 def edituser(request):
 	if request.method=='POST':
 		if 'username' in  request.POST and 'email' in request.POST:
@@ -956,6 +965,7 @@ def edituser(request):
 			return HttpResponse(3)					#更新密码成功
 	return HttpResponse("........................")
 
+@login_required
 def statusquery(request):
 	if 'name' in request.POST:
 		name=request.POST.get('name')
@@ -973,6 +983,7 @@ def statusquery(request):
                 results.append({'name':infor[0],'email':infor[1],'status':status,'last_login':infor[3]})	
 	return HttpResponse(results)
 
+@login_required
 def query():
 	conn=MySQLdb.connect(host='localhost',user='root',passwd='redhat',port=3306,db='haha',charset='utf8')
 	cursor=conn.cursor()
@@ -983,12 +994,19 @@ def query():
 	for infor in infors:
 		result={}
 		result["name"]=infor[0]
+		group=Group.objects.get(name=infor[0])
+		userlist=group.user_set.all()
+		users=''
+		for user in userlist:
+                    users=users+user.username+","
 		result["description"]=infor[1]
 		result["updatetime"]=str(infor[2])
+		result['userlist']=users
 		results.append(json.dumps(result))
 	return results
 		
 
+@login_required
 def addrole(request):
 	if 'rolename' in request.POST and 'roledesc' in request.POST and 'action' in request.POST:
 		times=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
@@ -1034,6 +1052,7 @@ def addrole(request):
 	return HttpResponse(json.dumps(data))
 
 	
+@login_required
 def grouplist(request):
 	group=Group.objects.all()
 	results=[]
@@ -1045,6 +1064,7 @@ def grouplist(request):
 	return HttpResponse(json.dumps(results))
 
 
+@login_required
 def usergroup(request):
 	if request.method=='POST':
 		username=request.POST.get('username')
@@ -1060,6 +1080,7 @@ def usergroup(request):
 
 
 
+@login_required
 def groupmod(request):
 	if request.method=='POST':
 		grouplist=request.POST.get('grouplist')
@@ -1079,3 +1100,68 @@ def groupmod(request):
 			
 		return HttpResponse("success")
 	return HttpResponse("...................")
+
+
+@login_required
+def permlist(request):
+	results=[]
+	content=ContentType.objects.get_for_model(book)
+	permissions=Permission.objects.filter(content_type=content)
+	for permission in permissions:
+		result={}
+		result['name']=permission.name
+		result['codename']=permission.codename
+		result['content']=u'book'
+		results.append(json.dumps(result))
+	return HttpResponse(json.dumps(results))
+
+
+@login_required
+def addperm(request):
+	permname=request.POST.get('permname')
+	content=request.POST.get('content')
+	permission=Permission.objects.filter(name=permname)
+	if len(permission)>0:
+		return HttpResponse("4")                     #返回权限名称已经存在的错误码 
+	permission=Permission.objects.filter(codename=content)
+	if len(permission)>0:
+		return HttpResponse("5")                     #返回权限内容已经存在的错误码 
+	contentype=ContentType.objects.get_for_model(book)
+	permission=Permission.objects.create(codename=content,name=permname,content_type=contentype)
+	permission.save()
+	data=permlist(request)
+	return HttpResponse(data)
+
+
+@login_required
+def assignrole(request):
+	rolename=request.POST.get('rolename')
+	perm=request.POST.get('perm')
+	removelist=request.POST.get('removelist')
+	group=Group.objects.get(name=rolename)
+	if len(perm)>0:
+		for i in perm.split('*'):
+			if len(i):
+				permission=Permission.objects.get(codename=i)
+				group.permissions.add(permission)
+	if len(removelist)>0:
+		for i in removelist.split('*'):
+			if len(i):
+				permission=Permission.objects.get(codename=i)
+				group.permissions.remove(permission)
+	return HttpResponse("success")
+
+
+@login_required
+def getassign(request):                                  #获取权限列表
+	rolename=request.POST.get('rolename')
+	group=Group.objects.get(name=rolename)
+	permissionlist=group.permissions.get_query_set()
+	results=[]
+	for permission in permissionlist:
+		result={}
+		result['name']=permission.name
+		result['codename']=permission.codename
+		results.append(json.dumps(result))
+	return HttpResponse(json.dumps(results))
+			

@@ -4,21 +4,26 @@
 <script src="/js/jquery.min.js">
 </script>
 <script>
-$(document).ready(function(){
- $("button").click(function(){
-  $.post("demo_test_post.asp",
-  {
-   name:"Donald Duck",
-   city:"Duckburg"
-  },
-  function(data,status){
-   alert("Data: " + data + "\nStatus: " + status);
-  });
- });
-});
+$(function(){
+	$("#confirm").click(function(){
+		$.ajax({url:'/aaa/',
+			type:'post',
+			data:$("#test").serialize(),
+		});
+	});
+})
 </script>
 </head>
 <body>
-<button>发送POST数据并获取返回结果</button>
+<form id='test'>
+username: <input type="text" name="username" value="zhangsan">
+password:<input type="passwd" name="password" value="123456">
+<input type="checkbox" name="chk1" value="1">
+<input type="hidden" name="chk1" value="1">
+<input type="checkbox" name="chk1" value="2">
+<input type="checkbox" name="chk1" value="3">
+<input type="checkbox" name="chk1" value="4">
+<input type="button" value="提交" id="confirm">
+</form>
 </body>
 </html>

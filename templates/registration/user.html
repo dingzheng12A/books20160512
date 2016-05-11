@@ -18,6 +18,7 @@ body,html{padding:0;margin:0;text-align:center;font:normal 14px 'arial';}
 </style>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script language="javascript" src="/js/rolemanager.js"></script>
+<script language="javascript" src="/js/permanager.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#confirm').attr('disabled','true');
@@ -31,6 +32,7 @@ $(function(){
 		$('.bookquery').css("display","none");
 		$('.bookdelete').css("display","none");
 		$('.bookmod').css("display","none");
+		$('.role').css("display","none");
 
 	});
 	$('.close').mouseover(function(){			
@@ -56,6 +58,7 @@ $(function(){
 		$('.passwd').css("display","none");
 		$('.user').hide();
 		$('.user').find('.close1').css('display','none');
+		$('.role').css("display","none");
 		
 		
 	});		
@@ -75,6 +78,8 @@ $(function(){
 		$('.passwd').css("display","none");
 		$('.user').hide();
 		$('.user').find('.close1').css('display','none');
+		$('.role').find('.close1').css('display','none');
+		
 		
 		
 	});		
@@ -94,6 +99,8 @@ $(function(){
 		$('.passwd').css("display","none");
 		$('.user').hide();
 		$('.user').find('.close1').css('display','none');
+		$('.role').find('.close1').css('display','none');
+		
 		
 		
 	});		
@@ -113,6 +120,7 @@ $(function(){
 		$('.passwd').css("display","none");
 		$('.user').hide();
 		$('.user').find('.close1').css('display','none');
+		$('.role').find('.close1').css('display','none');
 		
 		
 	});		
@@ -133,6 +141,7 @@ $(function(){
 		$("#sp_bookdelete").show();
 		$('.user').hide();
 		$('.user').find('.close1').css('display','none');
+		$('.role').find('.close1').css('display','none');
 	});
 	
 	$("#confirm").click(function(){					
@@ -1195,15 +1204,23 @@ $(function(){
 <li>
 <a href="#">添加</a>
 <div id="subNav">
+{% if perms.books.add_book%}
 <a id="addbook"  href="#">添加图书</a>
+{%endif%}
+{% if perms.books.query_book %}
 <a id="bookquery" href="#">查询图书</a>
+{%endif%}
 </div>
 </li>
 <li>
 <a href="#">编辑</a>
 <div id="subNav">
+{%if perms.books.change_book%}
 <a id="bookmod" href="#">编辑图书</a>
+{%endif%}
+{%if perms.books.delete_book%}
 <a id="bookdelete" href="#">删除图书</a>
+{%endif%}
 </div>
 </li>
 <li>
@@ -1211,6 +1228,7 @@ $(function(){
 <div id="subNav">
 {% if user.is_superuser%}
 <a href="#" id="rolemanager">角色管理</a>
+<a href="#" id="permanager">权限管理</a>
 <a href="#" id="usermanager">用户管理</a>
 {%endif%}
 <a id="modifypasswd" href="#">修改密码</a>
@@ -1343,6 +1361,36 @@ $(function(){
 			<input type="hidden" id="hidden" value={{pages}}>
                         <input type="button" id="nextpage" value="下一页">
                         <input type="button" id="endpage" value="尾页">
+		</div>
+		<div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div>
+	</div>
+	<div class="perm" id="perm"> <font style="font-weight:bold;font-size:18px;color:blue;" align="right">权限管理</font><hr/>
+		<div class="button_addperm">添加权限</div>
+		<div class="perms">
+			<div class="permlist">
+				<font style="font-size:13px;font-weight:bold;">权限列表</font>
+			</div>
+			</br>
+			<table id="permlist" border="1" cellpadding="0" cellspacing="0">
+			<tr style="background-color:gray;"><td width="200px;" align="center">权限名称</td><td width="200px" align="center">权限描述</td><td width="200px" align="center">应用目标</td><td width="200px;">操作</td></tr>
+			</table>
+		</div>
+		<div class="bottom_role">
+                        <select style="width:50px;height:29px;" name="select" id="limits">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                        </select>
+                        <input type="button" id="startpage" value="首页">
+                        <input type="button" id="privpage" value="前一页">
+                        第<input type="text" id="page" value="1" placeholder="1" size="1px;">页 共 {{ pages }} 页
+			<input type="hidden" id="hidden" value={{pages}}>
+                        <input type="button" id="nextpage" value="下一页">
+                        <input type="button" id="endpage" value="尾页">
+		</div>
+		<div class='close1'><span style='font-size:16px;cursor:default;font-weight:bold'><img src='/js/timg.jpg/' alt='关闭' height='20px'></span></div>
 	</div>
 </div>
 <script language="javascript">

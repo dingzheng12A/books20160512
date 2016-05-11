@@ -306,35 +306,35 @@ $(".Assign").click(function(){
 			var add="添加</br>";
 			$.each(data,function(index,item){
 				var dataObj=eval("("+item+")");
-				if(dataObj.name=='添加图书' || dataObj.name=='查询图书'){
-					add+=dataObj.name+"<input type='checkbox' id='perm' value="+dataObj.codename+">&nbsp;&nbsp;";
+				if(dataObj.name=='添加图书'){
+					add+=dataObj.name+"<input type='checkbox' id='perm' value="+dataObj.codename+"></br>";
 				}else if(dataObj.name=="编辑图书" || dataObj.name=="删除图书"){
 					edit+=dataObj.name+"<input type='checkbox' id='perm' value="+dataObj.codename+">&nbsp;&nbsp;";
 				};
 				});
 			tooltip+=add+"</br><hr style='height:9px;border:none;border-top:9px ridge green'>"+edit+"</br><hr style='height:9px;border:none;border-top:9px ridge green'>"+"</form><input type='button' id='confirm' value='确认'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id='cancle' value='取消'></div>";
 			$('body').append(tooltip);
-			$(".little_over").css("display","block");
-			$(".Assignrole").css("display","block");
 			
 		}
 	});
-	$.ajax({url:'/getassign/',    //获取当前角色权限列表
-		type:'post',
-		data:{rolename:rolename.text()},
-		dataType:'json',
-		success:function(data){
-			$.each(data,function(index,item){
-				var dataObj=eval("("+item+")");
-				$(".Assignrole").find("#perm").each(function(){
-					if(dataObj.codename==$(this).val()){
-						$(this).attr("checked","checked");
-					};
-				});
-			});
-		}
-	})  
-	$(document).on("click",".Assignrole #confirm",function(){
+			$(".little_over").css("display","block");
+			$(".Assignrole").css("display","block");
+//	$.ajax({url:'/getassign/',    //获取当前角色权限列表
+//		type:'post',
+//		data:{rolename:rolename.text()},
+//		dataType:'json',
+//		success:function(data){
+//			$.each(data,function(index,item){
+//				var dataObj=eval("("+item+")");
+//				$(".Assignrole").find("#perm").each(function(){
+//					if(dataObj.codename==$(this).val()){
+//						$(this).attr("checked","checked");
+//					};
+//				});
+//			});
+//		}
+//	})  
+	$(".Assignrole #confirm").click(function(){
 		var permlist='';
 		var removelist='';
 		$(".Assignrole").find("#perm").each(function(){
@@ -346,7 +346,7 @@ $(".Assign").click(function(){
 		});
 		$.ajax({url:'/assignrole/',
 			type:'post',
-		       data:{rolename:rolename.text(),perm:permlist,removelist:removelist},
+		       data:{rolename:rolename.text(),perm:permlist},
 			success:function(data){
 				if(data=='success'){
 					var tooltip=$(".little_over");
@@ -359,7 +359,7 @@ $(".Assign").click(function(){
 		});
 	
 	});
-	$(document).on("click",".Assignrole #cancle",function(){
+	$(".Assignrole #cancle").click(function(){
 		var tooltip=$(".little_over");
 		tooltip.remove();
 		var tooltip=$(".Assignrole");

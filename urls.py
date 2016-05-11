@@ -41,6 +41,12 @@ urlpatterns = patterns('',
 	(r'^grouplist/$','views.grouplist'),
 	(r'^usergroup/$','views.usergroup'),
 	(r'^groupmod/$','views.groupmod'),
+	(r'^permlist/$','views.permlist'),
+	(r'^addperm/$','views.addperm'),
+	(r'^assignrole/$','views.assignrole'),
+	(r'^getassign/$','views.getassign'),
+	
+	
 #	(r'^tinymce/$',include('tinymce.urls')),
     # Examples:
     # url(r'^$', 'haha.views.home', name='home'),
